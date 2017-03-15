@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+
+    <ion-row>
+        <ion-col col-9>
+            <ion-title class="ion-title">
+            Create Video
+            </ion-title>
+        </ion-col>
+        <ion-col col-3>
+            <button ion-button clear (click)="closeModal()">Close</button>
+        </ion-col>
+    </ion-row> 
+    
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-list>
+        <ion-item>
+            <ion-label floating>Descrição</ion-label>
+            <ion-input type="text"></ion-input>
+        </ion-item>
+    </ion-list>
+
+    <button ion-button block>Create</button>
+
+</ion-content>
