@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title class="ion-title">
-    Create Video
+    Edit Video {{video.id}}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -9,12 +9,12 @@
 <ion-content padding>
 
     <ion-list>
-        <form #formData='ngForm' (submit)="createVideo(formData)">
+        <form (submit)="updateVideo(video)">
             <ion-item>
                 <ion-label floating>Descrição</ion-label>
-                <ion-input type="text" [(ngModel)]="description" name="description" required></ion-input>
+                <ion-input type="text" [(ngModel)]="video.description" name="description" required></ion-input>
             </ion-item>
-            <button ion-button block type="submit" [disabled]="!formData.valid">Create</button>
+            <button ion-button block type="submit" [disabled]="!video.description">Edit</button>
         </form>
     </ion-list>
 

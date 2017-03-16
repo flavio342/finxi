@@ -5,6 +5,7 @@ import { AboutPage } from '../pages/about/about';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { CreateVideo } from '../pages/create-video/create-video';
+import { UpdateVideo } from '../pages/update-video/update-video';
 
 import { IonicStorageModule } from '@ionic/storage';
 
@@ -14,7 +15,8 @@ import { IonicStorageModule } from '@ionic/storage';
     AboutPage,
     HomePage,
     TabsPage,
-    CreateVideo
+    CreateVideo,
+    UpdateVideo
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -26,7 +28,8 @@ import { IonicStorageModule } from '@ionic/storage';
     AboutPage,
     HomePage,
     TabsPage,
-    CreateVideo
+    CreateVideo,
+    UpdateVideo
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
