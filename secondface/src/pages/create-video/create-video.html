@@ -18,12 +18,13 @@
 <ion-content padding>
 
     <ion-list>
-        <ion-item>
-            <ion-label floating>Descrição</ion-label>
-            <ion-input type="text"></ion-input>
-        </ion-item>
+        <form #formData='ngForm' (submit)="createVideo(formData)">
+            <ion-item>
+                <ion-label floating>Descrição</ion-label>
+                <ion-input type="text" [(ngModel)]="description" name="description" required></ion-input>
+            </ion-item>
+            <button ion-button block type="submit" [disabled]="!formData.valid">Create</button>
+        </form>
     </ion-list>
-
-    <button ion-button block>Create</button>
 
 </ion-content>
