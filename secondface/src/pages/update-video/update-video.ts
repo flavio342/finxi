@@ -22,7 +22,6 @@ export class UpdateVideo {
   public video:any;
 
   public database:SQLite;
-  public videos:Array<Object>;
 
   constructor(public platform:Platform, public navCtrl: NavController,private navParams: NavParams) {
     this.platform.ready().then(() => {
@@ -36,7 +35,8 @@ export class UpdateVideo {
     console.log(navParams);
     this.video = {
       id: navParams.get('id'),
-      description: navParams.get('description')
+      description: navParams.get('description'),
+      date: navParams.get('date')
     }
   }
 

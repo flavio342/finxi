@@ -22,7 +22,12 @@ export class MyApp {
             name: "data.db",
             location: "default"
         }).then(() => {
-            db.executeSql("CREATE TABLE IF NOT EXISTS videos (id INTEGER PRIMARY KEY AUTOINCREMENT, description TEXT)", {}).then((data) => {
+            db.executeSql("DROP TABLE videos", {}).then((data) => {
+                console.log("TABLE DROPED: ", data);
+            }, (error) => {
+                console.error("Unable to execute sql", error);
+            })
+            db.executeSql("CREATE TABLE IF NOT EXISTS videos (id INTEGER PRIMARY KEY AUTOINCREMENT, description TEXT, localURL TEXT, fullPath TEXT, date LONG)", {}).then((data) => {
                 console.log("TABLE CREATED: ", data);
             }, (error) => {
                 console.error("Unable to execute sql", error);

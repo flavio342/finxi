@@ -9,6 +9,8 @@ import { UpdateVideo } from '../pages/update-video/update-video';
 
 import { IonicStorageModule } from '@ionic/storage';
 
+import { MediaCapture, Camera  } from 'ionic-native';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -31,6 +33,6 @@ import { IonicStorageModule } from '@ionic/storage';
     CreateVideo,
     UpdateVideo
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},MediaCapture,Camera]
 })
 export class AppModule {}

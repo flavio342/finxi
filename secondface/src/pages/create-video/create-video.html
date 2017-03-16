@@ -1,20 +1,22 @@
 <ion-header>
   <ion-navbar>
     <ion-title class="ion-title">
-    Create Video
+    Post Video
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 
+    <button ion-button (click)="startrecording()">Record Video</button>
+    <p *ngIf="date != null">Recorded</p>
     <ion-list>
-        <form #formData='ngForm' (submit)="createVideo(formData)">
+        <form (submit)="createVideo()">
             <ion-item>
                 <ion-label floating>Descrição</ion-label>
                 <ion-input type="text" [(ngModel)]="description" name="description" required></ion-input>
             </ion-item>
-            <button ion-button block type="submit" [disabled]="!formData.valid">Create</button>
+            <button ion-button block type="submit" [disabled]="!description || !localURL || !fullPath">Post</button>
         </form>
     </ion-list>
 

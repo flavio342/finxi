@@ -5,6 +5,8 @@ import {Platform} from 'ionic-angular';
 
 import { NavController } from 'ionic-angular';
 
+import { MediaCapture } from 'ionic-native';
+
 @Component({
   selector: 'create-video',
   templateUrl: 'create-video.html',
@@ -17,8 +19,12 @@ import { NavController } from 'ionic-angular';
 
 export class CreateVideo {
 
+  description:any;
+  localURL:any;
+  fullPath:any;
+  date:any;
+  
   public database:SQLite;
-  public videos:Array<Object>;
 
   constructor(public platform:Platform, public navCtrl: NavController) {
     this.platform.ready().then(() => {
@@ -30,17 +36,36 @@ export class CreateVideo {
         });
         
     });
+
+    
   }
 
-  createVideo(formData){
-    if(formData.valid){
-      this.database.executeSql("INSERT INTO videos (description) VALUES ('" + formData.value.description + "')", []).then((data) => {
-            console.log("INSERTED: " + JSON.stringify(data));
-        }, (error) => {
-            console.log("ERROR: " + JSON.stringify(error.err));
-      });
-    }
+  createVideo(){
+    console.log("INSERT INTO videos (description,localURL,fullPath) VALUES ('" + this.description + "','" + this.localURL + "','" + this.fullPath + "')")
+    this.database.executeSql("INSERT INTO videos (description,localURL,fullPath,date) VALUES ('" + this.description + "','" + this.localURL + "','" + this.fullPath + "','" + this.date + "')", []).then((data) => {
+          console.log("INSERTED: " + JSON.stringify(data));
+      }, (error) => {
+          console.log("ERROR: " + JSON.stringify(error.err));
+    });
     this.navCtrl.pop();
+
+    
+  }
+
+  setVideo(videoData){
+    this.localURL = videoData[0].localURL;
+    this.fullPath = videoData[0].fullPath;
+    this.date = videoData[0].lastModifiedDate;
+  }
+
+
+  startrecording() {
+    MediaCapture.captureVideo({
+      limit:1,
+      duration:1
+    }).then( (videoData) => this.setVideo(videoData) , function(err) {
+      
+    });
   }
 
 }
